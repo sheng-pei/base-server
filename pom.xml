@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.7.18</version>
+    </parent>
+
+    <groupId>ppl.server.base</groupId>
+    <artifactId>base-server</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>common</module>
+        <module>springdoc-starter</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <logback.version>1.2.13</logback.version>
+        <tomcat.version>9.0.93</tomcat.version>
+        <spring-framework.version>5.3.37</spring-framework.version>
+        <snakeyaml.version>2.0</snakeyaml.version>
+        <spring-security.version>5.8.13</spring-security.version>
+        <springdoc.version>1.8.0</springdoc.version>
+        <therapi-runtime-javadoc.version>0.15.0</therapi-runtime-javadoc.version>
+        <bcprov-jdk15on.version>1.70</bcprov-jdk15on.version>
+        <jsch.version>0.1.55</jsch.version>
+        <mysql.version>9.0.0</mysql.version>
+        <mybatis.version>2.3.2</mybatis.version>
+        <java-jwt.version>3.2.0</java-jwt.version>
+
+        <common-utils.version>1.5.6-SNAPSHOT</common-utils.version>
+        <base-server-common.version>1.0.0-SNAPSHOT</base-server-common.version>
+        <springdoc-starter.version>1.0.0-SNAPSHOT</springdoc-starter.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ppl.common.utils</groupId>
+                <artifactId>common-utils-core</artifactId>
+                <version>${common-utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>${bcprov-jdk15on.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${java-jwt.version}</version>
+            </dependency>
+
+            <!-- springdoc -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi</artifactId>
+                <version>${springdoc.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>ppl.server.base</groupId>
+                <artifactId>common</artifactId>
+                <version>${base-server-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ppl.server.base</groupId>
+                <artifactId>springdoc-starter</artifactId>
+                <version>${springdoc-starter.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <attach>true</attach>
+                        </configuration>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

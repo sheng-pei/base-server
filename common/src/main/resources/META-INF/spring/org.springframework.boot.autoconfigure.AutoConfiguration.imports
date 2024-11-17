@@ -1,0 +1,5 @@
+ppl.server.base.autoconfigure.CommonJacksonConfiguration
+ppl.server.base.autoconfigure.RConfiguration
+ppl.server.base.autoconfigure.ControllerConfiguration
+ppl.server.base.autoconfigure.WebMvcConfiguration
+ppl.server.base.autoconfigure.OpenApiConfiguration
