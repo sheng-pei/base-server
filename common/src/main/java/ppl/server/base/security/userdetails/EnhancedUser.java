@@ -12,7 +12,7 @@ public class EnhancedUser implements UserDetails, CredentialsContainer {
     private final Long userId;
     private final String username;
     private String password;
-    private final String fullname;
+    private final String name;
     private final String email;
     private final String phone;
     private final List<Organization> organizations;
@@ -22,14 +22,14 @@ public class EnhancedUser implements UserDetails, CredentialsContainer {
     private final List<PermissionCode> permissionCodes;
 
     public EnhancedUser(Long userId, String username, String password,
-                        String fullname, String email, String phone,
+                        String name, String email, String phone,
                         List<Organization> organizations,
                         Boolean depart, Boolean enabled, Boolean locked,
                         List<PermissionCode> permissionCodes) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.fullname = fullname;
+        this.name = name;
         this.email = email;
         this.phone = phone;
         this.organizations = Collections.unmodifiableList(organizations);
@@ -43,8 +43,8 @@ public class EnhancedUser implements UserDetails, CredentialsContainer {
         return userId;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getName() {
+        return name;
     }
 
     public String getEmail() {

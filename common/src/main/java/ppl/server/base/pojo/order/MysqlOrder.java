@@ -1,7 +1,6 @@
 package ppl.server.base.pojo.order;
 
 import ppl.common.utils.string.Strings;
-import ppl.server.base.enums.OrderDirection;
 
 public class MysqlOrder implements DBOrder {
     private final OrderVo order;

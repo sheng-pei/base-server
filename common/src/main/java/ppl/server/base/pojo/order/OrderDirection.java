@@ -1,4 +1,4 @@
-package ppl.server.base.enums;
+package ppl.server.base.pojo.order;
 
 import java.util.Objects;
 
