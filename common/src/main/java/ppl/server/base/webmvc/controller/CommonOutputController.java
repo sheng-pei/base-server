@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
-import ppl.server.base.webmvc.response.R;
-import ppl.server.base.webmvc.response.Rcs;
+import ppl.server.base.webmvc.response.r.R;
+import ppl.server.base.webmvc.response.r.Rcs;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("${server.output.path:${output.path:/output}}")
@@ -24,12 +25,11 @@ public class CommonOutputController {
     public static final String FILTER_SUCCESS_BODY = "FILTER_SUCCESS_BODY";
     public static final String FILTER_SUCCESS_MESSAGE = "FILTER_SUCCESS_MESSAGE";
 
-    private Rcs rcs = new Rcs();
+    private final Rcs rcs;
 
     public CommonOutputController(Rcs rcs) {
-        if (rcs != null) {
-            this.rcs = rcs;
-        }
+        Objects.requireNonNull(rcs, "rcs is required.");
+        this.rcs = rcs;
     }
 
     @RequestMapping

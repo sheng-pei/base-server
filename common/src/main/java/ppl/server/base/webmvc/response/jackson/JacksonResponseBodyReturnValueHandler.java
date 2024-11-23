@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.jackson;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;

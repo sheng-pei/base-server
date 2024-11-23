@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.r;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +14,7 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+import ppl.server.base.webmvc.response.jackson.JacksonResponseBody;
 
 @ControllerAdvice
 public class RJsonResponseBodyAdvice implements ResponseBodyAdvice<Object>, ApplicationContextAware {
@@ -28,7 +29,9 @@ public class RJsonResponseBodyAdvice implements ResponseBodyAdvice<Object>, Appl
     }
 
     @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
+                                  Class<? extends HttpMessageConverter<?>> selectedConverterType,
+                                  ServerHttpRequest request, ServerHttpResponse response) {
         if (response instanceof ServletServerHttpResponse) {
             ServletServerHttpResponse sshr = ((ServletServerHttpResponse) response);
             int status = sshr.getServletResponse().getStatus();

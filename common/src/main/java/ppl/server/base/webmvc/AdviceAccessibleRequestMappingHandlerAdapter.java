@@ -7,7 +7,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-import ppl.server.base.webmvc.response.JacksonResponseBodyReturnValueHandler;
+import ppl.server.base.webmvc.response.jackson.JacksonResponseBodyReturnValueHandler;
 
 import java.util.ArrayList;
 import java.util.List;

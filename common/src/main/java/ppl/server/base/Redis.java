@@ -12,6 +12,7 @@ public class Redis {
     private static final RedisScript<Boolean> DECR_UP_BOTTOM_SCRIPT = RedisScript.of(
             "local k = KEYS[1]\n" +
                     "local bottom = tonumber(ARGV[1])\n" +
+                    "local ttl = tonumber(ARGV[2])\n" +
                     "local reply = redis.call('get', k)\n" +
                     "if reply == false then\n" +
                     "  return { err = 'Key: \\'' .. k .. '\\' not exists.' }\n" +
@@ -23,6 +24,9 @@ public class Redis {
                     "if e > bottom then\n" +
                     "  redis.call('decr', k)\n" +
                     "  return true\n" +
+                    "end\n" +
+                    "if ttl then\n" +
+                    "  redis.call('expire', k, ttl)\n" +
                     "end\n" +
                     "return false", Boolean.class);
 
@@ -102,8 +106,17 @@ public class Redis {
     }
 
     public boolean decrementOverBottom(String key, long bottom) {
+        return decrementOverBottom(key, bottom, -1, null);
+    }
+
+    public boolean decrementOverBottom(String key, long bottom, long timeout, TimeUnit unit) {
+        List<String> values = new ArrayList<>();
+        values.add(bottom + "");
+        if (timeout > 0) {
+            values.add(unit.toSeconds(timeout) + "");
+        }
         Boolean res = redisTemplate.execute(DECR_UP_BOTTOM_SCRIPT,
-                Collections.singletonList(key), bottom + "");
+                Collections.singletonList(key), values.toArray());
         return res != null && res;
     }
 

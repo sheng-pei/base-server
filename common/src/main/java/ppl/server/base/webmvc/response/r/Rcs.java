@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.r;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,7 @@ public class Rcs {
     private static final Set<ResponseCode> DEFAULT_CODES = Collections.newSetFromMap(new IdentityHashMap<>());
 
     private static final ResponseCode OK = registerDefault(1, true, "成功。");
-    private static final ResponseCode REDIRECTION = registerDefault(2, true, "重定向");
+    private static final ResponseCode REDIRECTION = registerDefault(2, true, "重定向。");
 
     //error
     private static final ResponseCode UNKNOWN = registerDefault(1000, false, "未知错误。", Throwable.class);
@@ -116,6 +116,10 @@ public class Rcs {
 
     public ResponseCode unknown() {
         return responseCodes.get(UNKNOWN.code());
+    }
+
+    public <T> R<T> success(T data) {
+        return ok().res().data(data);
     }
 
     public <T> R<T> fromException(Throwable t) {

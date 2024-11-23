@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.r;
 
 import ppl.common.utils.ArrayUtils;
 import ppl.common.utils.string.Strings;

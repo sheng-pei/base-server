@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.jackson;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Documented
 @Controller
 @JacksonResponseBody
-public @interface RController {
+public @interface JController {
     @AliasFor(annotation = Controller.class)
     String value() default "";
 }

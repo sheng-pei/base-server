@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.r;
 
 public class R<T> {
     private final ResponseCode code;

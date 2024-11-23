@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
-import ppl.server.base.webmvc.response.R;
-import ppl.server.base.webmvc.response.Rcs;
+import ppl.server.base.webmvc.response.r.R;
+import ppl.server.base.webmvc.response.r.Rcs;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
@@ -27,14 +27,14 @@ public class CommonErrorController implements ErrorController, InitializingBean 
 
     private static final Logger log = LoggerFactory.getLogger(CommonErrorController.class);
 
-    private Rcs rcs = new Rcs();
+    private final Rcs rcs;
     private final ErrorAttributes errorAttributes;
     private HttpStatus statusOnException;
 
     public CommonErrorController(Rcs rcs, ErrorAttributes errorAttributes) {
-        if (rcs != null) {
-            this.rcs = rcs;
-        }
+        Objects.requireNonNull(rcs, "rcs is required.");
+        Objects.requireNonNull(errorAttributes, "errorAttributes is required.");
+        this.rcs = rcs;
         this.errorAttributes = errorAttributes;
     }
 

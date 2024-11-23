@@ -1,4 +1,4 @@
-package ppl.server.base.webmvc.response;
+package ppl.server.base.webmvc.response.jackson;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 

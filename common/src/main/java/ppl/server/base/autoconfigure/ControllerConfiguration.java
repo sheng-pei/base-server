@@ -6,7 +6,7 @@ import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import ppl.server.base.webmvc.controller.CommonErrorController;
 import ppl.server.base.webmvc.controller.CommonOutputController;
-import ppl.server.base.webmvc.response.Rcs;
+import ppl.server.base.webmvc.response.r.Rcs;
 
 @AutoConfiguration(before = ErrorMvcAutoConfiguration.class)
 public class ControllerConfiguration {
