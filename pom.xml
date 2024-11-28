@@ -17,6 +17,7 @@
     <modules>
         <module>common</module>
         <module>springdoc-starter</module>
+        <module>test</module>
     </modules>
 
     <properties>

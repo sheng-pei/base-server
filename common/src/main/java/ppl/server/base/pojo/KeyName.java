@@ -1,5 +1,8 @@
 package ppl.server.base.pojo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.function.Supplier;
 
 public class KeyName<K> {
@@ -24,7 +27,8 @@ public class KeyName<K> {
         return new KeyName<>(keySupplier.get(), nameSupplier.get());
     }
 
-    public static <K> KeyName<K> create(K key, String name) {
+    @JsonCreator
+    public static <K> KeyName<K> create(@JsonProperty("key") K key, @JsonProperty("name") String name) {
         return new KeyName<>(key, name);
     }
 }
